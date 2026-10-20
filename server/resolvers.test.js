@@ -1,0 +1,3 @@
+const {demoLessons,demoMessages}=require('./resolvers');
+test('demo lessons have the fields needed by the GraphQL lesson type',()=>{for(const l of demoLessons){expect(l).toEqual(expect.objectContaining({id:expect.any(String),title:expect.any(String),subject:expect.any(String),status:expect.any(String)});expect(Array.isArray(l.objectives)).toBe(true)}});
+test('demo messages have a readable parent communication shape',()=>{expect(demoMessages[0]).toEqual(expect.objectContaining({parentName:expect.any(String),parentEmail:expect.any(String),studentName:expect.any(String),subject:expect.any(String),body:expect.any(String)}))});
