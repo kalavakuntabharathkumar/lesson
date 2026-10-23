@@ -1,0 +1,4 @@
+const {validateLesson,validateParentMessage}=require('./validation');
+test('rejects a lesson with missing title and invalid duration',()=>{expect(validateLesson({title:'',subject:'Science',gradeLevel:'Grade 5',scheduledDate:'2026-11-01',durationMinutes:500})).toEqual(expect.arrayContaining(['Title is required','Duration must be between 10 and 240 minutes']))});
+test('accepts a valid lesson',()=>{expect(validateLesson({title:'Fractions',subject:'Math',gradeLevel:'Grade 5',scheduledDate:'2026-11-01',durationMinutes:45})).toEqual([])});
+test('validates parent email and message body',()=>{expect(validateParentMessage({parentName:'Sam',parentEmail:'not-an-email',studentName:'Alex',subject:'Hello',body:''})).toEqual(expect.arrayContaining(['A valid parent email is required','Message body is required']))});
